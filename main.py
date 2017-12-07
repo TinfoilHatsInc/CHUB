@@ -1,5 +1,7 @@
 import python_db_connection as pdbc
+import data_types as dt
 
-temp_module = pdbc.Module(1,'testmodule',1,0,1)
+temp_module = dt.module(1,'somethingelse',1,0,1)
 
-pdbc.new_module(temp_module)
+print(temp_module.values())
+pdbc.update_model(temp_module)
