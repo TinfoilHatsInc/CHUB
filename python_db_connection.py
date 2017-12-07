@@ -1,14 +1,13 @@
 import sqlite3 as sql
 
-db_name = 'CHUB.DB'
-
-def Module(id,name,type,room,alive):
-	return (id,name,type,room,alive)
+_db_name = 'CHUB.DB'
 
 
-def new_module(module):
-	conn = sql.connect(db_name)
-	c = conn.cursor()
-	c.execute('INSERT INTO Module VALUES (?,?,?,?,?)', module)
-	conn.commit()
-	conn.close()
+
+def insert_module(module):
+	"""Insert new module into database"""
+	_conn = sql.connect(_db_name)
+	_c = _conn.cursor()
+	_c.execute('INSERT INTO Module VALUES (?,?,?,?,?)', module.values())
+	_conn.commit()
+	_conn.close()
