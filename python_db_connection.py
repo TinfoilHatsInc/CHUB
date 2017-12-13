@@ -1,14 +1,24 @@
 import sqlite3 as sql
+import data_types as dt
 
 _db_name = 'CHUB.DB'
 
-def __executeSingle(_message, _values):
+def __executePush(_message, _values):
 	"""Handle Single line execution"""
 	_conn = sql.connect(_db_name)
 	_c = _conn.cursor()
 	_c.execute(_message, _values)
 	_conn.commit()
 	_conn.close()
+
+def __executePull(_message):
+	_conn = sql.connect(_db_name)
+	_c = _conn.cursor()
+	temp = []
+	for mod in _c.execute(_message):
+		temp.append(mod)
+	_conn.close()
+	return temp
 
 def __sortforupdate(_dict, _amount = 1):
 	"""sort the dict into a list with ID last"""
@@ -19,60 +29,104 @@ def __sortforupdate(_dict, _amount = 1):
 	return _list
 
 
-
 def insert_module(_module):
 	"""Insert new module into database"""
-	__executeSingle('INSERT INTO Module VALUES (?,?,?,?,?)', _module.values())
+	__executePush('INSERT INTO Module VALUES (?,?,?,?,?)', _module.values())
 
 def update_model(_model):
 	"""Update Exisiting Module in database"""
-	__executeSingle('UPDATE Module SET Name=?,Type=?,Room=?,Alive=? WHERE ID=?',__sortforupdate(_model))
+	__executePush('UPDATE Module SET Name=?,Type=?,Room=?,Alive=? WHERE ID=?',__sortforupdate(_model))
 
+def get_all_modules():
+	"""Retrieve all modules in the database"""
+	temp = __executePull('SELECT * FROM Module')
+	modules = []
+	for mod in temp:
+		modules.append(dt.module(mod[0],mod[1],mod[2],mod[3],mod[4]))
+	return modules
 
 
 def insert_room(_room):
 	"""Insert a new room into the database"""
-	__executeSingle('INSERT INTO Room VALUES (?,?)', _room.values())
+	__executePush('INSERT INTO Room VALUES (?,?)', _room.values())
 
 def update_room(_room):
 	"""Update existing room in database"""
-	__executeSingle('UPDATE Room SET Name=? WHERE ID=?',__sortforupdate(_room))
+	__executePush('UPDATE Room SET Name=? WHERE ID=?',__sortforupdate(_room))
 
+def get_all_rooms():
+	"""Retrieve all rooms in the database"""
+	temp = __executePull('SELECT * FROM Room')
+	rooms = []
+	for rom in temp:
+		rooms.append(dt.room(rom[0],rom[1]))
+	return rooms
 
 
 def insert_recording(_recording):
 	"""Insert a new recording into the database"""
-	__executeSingle('INSERT INTO Recording Values (?,?,?)',_recording.values())	
+	__executePush('INSERT INTO Recording Values (?,?,?)',_recording.values())	
 
 def update_recording(_recording):
 	"""update existing recording in database"""
-	__executeSingle('UPDATE Recording SET Event=?, File_Location=? WHERE ID=?',__sortforupdate(_recording))
+	__executePush('UPDATE Recording SET Event=?, File_Location=? WHERE ID=?',__sortforupdate(_recording))
+
+def get_all_recordings():
+	"""retrieve all recordings in the database"""
+	temp = __executePull('SELECT * FROM Recording')
+	recordings = []
+	for rec in temp:
+		recordings.append(dt.recording(rec[0], rec[1], rec[2]))
+	return recordings
 
 
 
 def insert_event(_event):
 	"""insert a new event into the database"""
-	__executeSingle('INSERT INTO Recording VALUES (?,?,?)',_event.values())
+	__executePush('INSERT INTO Recording VALUES (?,?,?)',_event.values())
 
 def update_event(_event):
 	"""update existing event in database"""
-	__executeSingle('UPDATE Event SET Room=?, Date_Time=? WHERE ID=?',__sortforupdate(_event))
+	__executePush('UPDATE Event SET Room=?, Date_Time=? WHERE ID=?',__sortforupdate(_event))
+
+def get_all_events():
+	"""retrieves all events in database"""
+	temp = __executePull('SELECT * FROM Event')
+	events = []
+	for eve in temp:
+		events.append(dt.event(eve[0], eve[1], eve[2]))
+	return events
 
 
 
 def insert_type(_type):
 	"""Insert a new type into the database"""
-	__executeSingle('INSERT INTO Type VALUES (?,?)', _type.values())
+	__executePush('INSERT INTO Type VALUES (?,?)', _type.values())
 
 def update_type(_type):
 	"""update existing type in database"""
-	__executeSingle('UPDATE Type SET Name=? Where ID=?', __sortforupdate(_type))
+	__executePush('UPDATE Type SET Name=? Where ID=?', __sortforupdate(_type))
 
+def get_all_types():
+	"""retrieve all types in the database"""
+	temp = __executePull('SELECT * FROM Type')
+	types = []
+	for typ in temp:
+		types.append(dt.module_type(typ[0], typ[1]))
+	return types
 
 def insert_override(_overide):
 	"""Insert a new override into the database"""
-	__executeSingle('INSERT INTO ConfigurationOverrides VALUES (?,?,?)', _overide.values())
+	__executePush('INSERT INTO ConfigurationOverrides VALUES (?,?,?)', _overide.values())
 
 def update_override(_override):
 	"""update existing override in database"""
-	__executeSingle('UPDATE ConfigurationOverrides SET Value=? WHERE Module=? AND Name =?', __sortforupdate(_override, 2))
+	__executePush('UPDATE ConfigurationOverrides SET Value=? WHERE Module=? AND Name =?', __sortforupdate(_override, 2))
+
+def get_all_overrides():
+	"""retrieve all overrides in the database"""
+	temp = __executePull('SELECT * FROM ConfigurationOverrides')
+	overrides = []
+	for over in temp:
+		overrides.append(dt.config_override(over[0], over[1], over[2]))
+	return overrides

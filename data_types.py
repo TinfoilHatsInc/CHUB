@@ -2,7 +2,6 @@ def module(_id, _name, _type, _room, _alive):
     """Data structure for the modules"""
     return {"ID": _id, "Name":_name, "Type": _type, "Room":_room, "Alive": _alive}
 
-
 def module_type(_id, _name):
     """Data structure for the module_types"""
     return {"ID":_id, "Name":_name}
