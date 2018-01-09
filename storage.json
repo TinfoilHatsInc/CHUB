@@ -1,0 +1,35 @@
+[
+  {
+    "ID": 0,
+    "Name": "undefined",
+    "Modules": [
+      {
+        "ID": 1,
+        "Name": "somethingelse",
+        "Type": "Observer",
+        "Alive": 1,
+        "Override": [
+          {
+            "Name": "testing",
+            "Value": 5
+          }
+        ]
+      },
+      {
+        "ID": 2,
+        "Name": "bleh",
+        "Type": "Trigger",
+        "Alive": 1,
+        "Override": "None"
+      },
+      {
+        "ID": 3,
+        "Name": "new module",
+        "Type": "Observer",
+        "Alive": 1,
+        "Override": "None"
+      }
+    ],
+    "Events": []
+  }
+]

@@ -32,7 +32,7 @@ def recording_jsn(_id,_location):
 def config_override_jsn(_name, _value):
     return {"Name":_name, "Value": _value}
 
-def module_jsn(_id, _name, _type,_alive, _override = "None"):
+def module_jsn(_id, _name, _type, _alive, _override = "None"):
     return {"ID": _id, "Name":_name, "Type": _type, "Alive": _alive, "Override": _override}
 
 def event_jsn(_id, _datetime, _recordings):
