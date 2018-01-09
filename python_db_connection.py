@@ -42,7 +42,7 @@ def get_all_modules():
 	temp = __executePull('SELECT * FROM Module')
 	modules = []
 	for mod in temp:
-		modules.append(dt.module(mod[0],mod[1],mod[2],mod[3],mod[4]))
+		modules.append(dt.module_db(mod[0],mod[1],mod[2],mod[3],mod[4]))
 	return modules
 
 
@@ -59,7 +59,7 @@ def get_all_rooms():
 	temp = __executePull('SELECT * FROM Room')
 	rooms = []
 	for rom in temp:
-		rooms.append(dt.room(rom[0],rom[1]))
+		rooms.append(dt.room_db(rom[0],rom[1]))
 	return rooms
 
 
@@ -76,7 +76,7 @@ def get_all_recordings():
 	temp = __executePull('SELECT * FROM Recording')
 	recordings = []
 	for rec in temp:
-		recordings.append(dt.recording(rec[0], rec[1], rec[2]))
+		recordings.append(dt.recording_db(rec[0], rec[1], rec[2]))
 	return recordings
 
 
@@ -94,7 +94,7 @@ def get_all_events():
 	temp = __executePull('SELECT * FROM Event')
 	events = []
 	for eve in temp:
-		events.append(dt.event(eve[0], eve[1], eve[2]))
+		events.append(dt.event_db(eve[0], eve[1], eve[2]))
 	return events
 
 
@@ -112,7 +112,7 @@ def get_all_types():
 	temp = __executePull('SELECT * FROM Type')
 	types = []
 	for typ in temp:
-		types.append(dt.module_type(typ[0], typ[1]))
+		types.append(dt.type_db(typ[0], typ[1]))
 	return types
 
 def insert_override(_overide):
@@ -128,5 +128,5 @@ def get_all_overrides():
 	temp = __executePull('SELECT * FROM ConfigurationOverrides')
 	overrides = []
 	for over in temp:
-		overrides.append(dt.config_override(over[0], over[1], over[2]))
+		overrides.append(dt.config_override_db(over[0], over[1], over[2]))
 	return overrides
