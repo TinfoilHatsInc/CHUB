@@ -4,18 +4,6 @@
     "Name": "undefined",
     "Modules": [
       {
-        "ID": 1,
-        "Name": "somethingelse",
-        "Type": "Observer",
-        "Alive": 1,
-        "Override": [
-          {
-            "Name": "testing",
-            "Value": 5
-          }
-        ]
-      },
-      {
         "ID": 2,
         "Name": "bleh",
         "Type": "Trigger",
@@ -30,6 +18,78 @@
         "Override": "None"
       }
     ],
+    "Events": [
+      {
+        "ID": 1,
+        "Datetime": "10-01-2018 10:40:29",
+        "Recordings": [
+          {
+            "ID": 1,
+            "File_Location": "PATH/TO/FILE"
+          },
+          {
+            "ID": 2,
+            "File_Location": "Path/To/Next/file"
+          }
+        ]
+      },
+      {
+        "ID": 2,
+        "Datetime": "10-01-2018 11:41:02",
+        "Recordings": []
+      },
+      {
+        "ID": 3,
+        "Datetime": "10-01-2018 12:11:55",
+        "Recordings": [
+          {
+            "ID": 1,
+            "File_Location": "/new/file/location"
+          }
+        ]
+      },
+      {
+        "ID": 4,
+        "Datetime": "10-01-2018 12:11:55",
+        "Recordings": [
+          {
+            "ID": 1,
+            "File_Location": "/new/file/location"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "ID": 1,
+    "Name": "Kitchen",
+    "Modules": [],
+    "Events": []
+  },
+  {
+    "ID": 2,
+    "Name": "Living Room",
+    "Modules": [
+      {
+        "ID": 1,
+        "Name": "somethingelse",
+        "Type": "Observer",
+        "Alive": 1,
+        "Override": "None"
+      }
+    ],
+    "Events": []
+  },
+  {
+    "ID": 3,
+    "Name": "Dinning Room",
+    "Modules": [],
+    "Events": []
+  },
+  {
+    "ID": 4,
+    "Name": "Bath Room",
+    "Modules": [],
     "Events": []
   }
 ]

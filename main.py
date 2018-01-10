@@ -6,7 +6,6 @@ import storageHandler as sh
 
 temp = sh.read_file()
 print(temp)
-sh.add_module(3,'new module','Observer',1)
-
+sh.move_module(1,2)
 temp = sh.read_file()
 print(temp)
