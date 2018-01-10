@@ -36,7 +36,7 @@ def module_jsn(_id, _name, _type, _alive, _override = "None"):
     return {"ID": _id, "Name":_name, "Type": _type, "Alive": _alive, "Override": _override}
 
 def event_jsn(_id, _datetime, _recordings):
-    return {"ID":_id,"Datetime":_datetime,"Recordings":_recordings}
+    return {"ID":_id,"Datetime":_datetime,"Recordings":_recordings, "Important": False}
 
 def room_jsn(_id, _name, _modules, _events):
     return {"ID": _id, "Name": _name, "Modules": _modules,"Events": _events}

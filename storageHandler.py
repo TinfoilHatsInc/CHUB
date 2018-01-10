@@ -49,6 +49,15 @@ def add_event(_triggerer):
     write_file(temp)
     return temp_id
 
+def update_event_status(_event_id,_room_id,_importance):
+    temp = read_file()
+    for room in temp:
+        if room['ID'] == _room_id:
+            for event in room['Events']:
+                if event['ID'] == _event_id:
+                    event['Important'] = _importance
+    write_file(temp)
+
 def add_recording(_event_id, _location):
     temp = read_file()
     for room in temp:

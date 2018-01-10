@@ -6,6 +6,6 @@ import storageHandler as sh
 
 temp = sh.read_file()
 print(temp)
-sh.move_module(1,2)
+sh.update_event_status(1,2,True)
 temp = sh.read_file()
 print(temp)

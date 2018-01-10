@@ -18,47 +18,7 @@
         "Override": "None"
       }
     ],
-    "Events": [
-      {
-        "ID": 1,
-        "Datetime": "10-01-2018 10:40:29",
-        "Recordings": [
-          {
-            "ID": 1,
-            "File_Location": "PATH/TO/FILE"
-          },
-          {
-            "ID": 2,
-            "File_Location": "Path/To/Next/file"
-          }
-        ]
-      },
-      {
-        "ID": 2,
-        "Datetime": "10-01-2018 11:41:02",
-        "Recordings": []
-      },
-      {
-        "ID": 3,
-        "Datetime": "10-01-2018 12:11:55",
-        "Recordings": [
-          {
-            "ID": 1,
-            "File_Location": "/new/file/location"
-          }
-        ]
-      },
-      {
-        "ID": 4,
-        "Datetime": "10-01-2018 12:11:55",
-        "Recordings": [
-          {
-            "ID": 1,
-            "File_Location": "/new/file/location"
-          }
-        ]
-      }
-    ]
+    "Events": []
   },
   {
     "ID": 1,
@@ -78,7 +38,19 @@
         "Override": "None"
       }
     ],
-    "Events": []
+    "Events": [
+      {
+        "ID": 1,
+        "Datetime": "10-01-2018 13:12:44",
+        "Recordings": [
+          {
+            "ID": 1,
+            "File_Location": "test"
+          }
+        ],
+        "Important": true
+      }
+    ]
   },
   {
     "ID": 3,
