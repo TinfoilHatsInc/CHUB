@@ -23,12 +23,6 @@
   {
     "ID": 1,
     "Name": "Kitchen",
-    "Modules": [],
-    "Events": []
-  },
-  {
-    "ID": 2,
-    "Name": "Living Room",
     "Modules": [
       {
         "ID": 1,
@@ -38,6 +32,12 @@
         "Override": "None"
       }
     ],
+    "Events": []
+  },
+  {
+    "ID": 2,
+    "Name": "Living Room",
+    "Modules": [],
     "Events": [
       {
         "ID": 1,
@@ -48,7 +48,7 @@
             "File_Location": "test"
           }
         ],
-        "Important": true
+        "Important": false
       }
     ]
   },
@@ -61,6 +61,12 @@
   {
     "ID": 4,
     "Name": "Bath Room",
+    "Modules": [],
+    "Events": []
+  },
+  {
+    "ID": 5,
+    "Name": "name",
     "Modules": [],
     "Events": []
   }
