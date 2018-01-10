@@ -1,0 +1,73 @@
+[
+  {
+    "ID": 0,
+    "Name": "undefined",
+    "Modules": [
+      {
+        "ID": 2,
+        "Name": "bleh",
+        "Type": "Trigger",
+        "Alive": 1,
+        "Override": "None"
+      },
+      {
+        "ID": 3,
+        "Name": "new module",
+        "Type": "Observer",
+        "Alive": 1,
+        "Override": "None"
+      }
+    ],
+    "Events": []
+  },
+  {
+    "ID": 1,
+    "Name": "Kitchen",
+    "Modules": [
+      {
+        "ID": 1,
+        "Name": "somethingelse",
+        "Type": "Observer",
+        "Alive": 1,
+        "Override": "None"
+      }
+    ],
+    "Events": []
+  },
+  {
+    "ID": 2,
+    "Name": "Living Room",
+    "Modules": [],
+    "Events": [
+      {
+        "ID": 1,
+        "Datetime": "10-01-2018 13:12:44",
+        "Recordings": [
+          {
+            "ID": 1,
+            "File_Location": "test"
+          }
+        ],
+        "Important": false
+      }
+    ]
+  },
+  {
+    "ID": 3,
+    "Name": "Dinning Room",
+    "Modules": [],
+    "Events": []
+  },
+  {
+    "ID": 4,
+    "Name": "Bath Room",
+    "Modules": [],
+    "Events": []
+  },
+  {
+    "ID": 5,
+    "Name": "name",
+    "Modules": [],
+    "Events": []
+  }
+]
