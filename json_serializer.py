@@ -35,8 +35,6 @@ def __main(argv):
             tup = ast.literal_eval(arg)
             sh.update_event_status(tup[0],tup[1],tup[2])
         elif opt in ("--get_armed"):
-            if sh.check_armed_status():
-                print("bleh")
             print(sh.check_armed_status())
         elif opt in ("--set_armed"):
             sh.set_armed_status()
