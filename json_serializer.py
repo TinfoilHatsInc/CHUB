@@ -30,7 +30,7 @@ def __main(argv):
             sh.add_room(arg)
         elif opt in ("-m", "--move_mod"):
             tup = ast.literal_eval(arg)
-            sh.move_module(tup[0],tup[1])
+            #sh.move_module(tup[0],tup[1])
         elif opt in ("-u", "--update_event"):
             tup = ast.literal_eval(arg)
             sh.update_event_status(tup[0],tup[1],tup[2])

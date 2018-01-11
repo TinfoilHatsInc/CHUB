@@ -11,13 +11,13 @@ def login(loginAddr, sendHash):
         print(hex(loginAddr))
         bus.write_byte_data(loginAddr, 128, len(addressArr) + 1)
 
-        if bus.read_byte(loginAddr) = 200:
+        if bus.read_byte(loginAddr) == 200:
             bus.write_i2c_block_data(loginAddr, 127, sendHash)
-            if bus.read_byte(loginAddr) = 200:
+            if bus.read_byte(loginAddr) == 200:
                 print("login successfull")
     except:
         print("no active login needed")
-    return;
+
 
 
 
@@ -25,7 +25,7 @@ def checkStatus():
     for addr in addressArr:
         try:
             bus.write_byte(addr, 125)
-            if bus.read_byte(addr) = 1:
+            if bus.read_byte(addr) == 1:
                 return 1
             else
                 return 0
