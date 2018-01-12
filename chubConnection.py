@@ -9,7 +9,6 @@ addressArr = []
 def loginRequest(loginAddr):
     bus.write_byte_data(loginAddr, 128, len(addressArr) + 1)
     time.sleep(1)
-#this returns the signature instead
     var = bus.read_byte(loginAddr)
     print(var)
 def loginResponse(sendHash):
@@ -18,6 +17,7 @@ def loginResponse(sendHash):
 	addressArr.append(len(addressArr) + 1)
         print("login successfull")
 	print(addressArr)
+
 
 
 #TODO: rewrite return logic
@@ -29,6 +29,7 @@ def checkAlarmStatus():
                 print "alarm"
             else:
                 print "no alarm"
+
         except:
             print("failure in statuscheck on: " + addr)
 
