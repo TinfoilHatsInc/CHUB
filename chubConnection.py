@@ -11,10 +11,12 @@ def loginRequest(loginAddr):
     time.sleep(1)
     var = bus.read_byte(loginAddr)
     print(var)
+
 def loginResponse(sendHash):
     bus.write_i2c_block_data(loginAddr, 127, sendHash)
-    if bus.read_byte(1) == 200:
-	addressArr.append(len(addressArr) + 1)
+    temp_addr = len(addressArr) + 1
+    if bus.read_byte(temp_addr) == 200:
+	addressArr.append(temp_addr)
         print("login successfull")
 	print(addressArr)
 
@@ -78,7 +80,10 @@ time.sleep(1)
 alarm(1)
 time.sleep(1)
 checkAlarmStatus()
-time.sleep(10)
+print("next device small test")
+time.sleep(30)
 loginRequest(loginAddr)
 time.sleep(1)
-loginResponse([1,2,3,4,5,6,7,8])
+loginResponse([1, 2, 3, 4, 5, 6, 7, 8])
+time.sleep(1)
+checkAlarmStatus()
