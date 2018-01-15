@@ -2,6 +2,8 @@ import json
 import data_types
 import datetime
 
+_armed_location = "/home/jona/TinfoilHats/CHUB/armed.stat"
+_storage_location ="/home/jona/TinfoilHats/CHUB/storage.json"
 
 
 def data_to_json(_rooms):
@@ -10,14 +12,32 @@ def data_to_json(_rooms):
 def json_to_data(_json):
     return json.loads(_json)
 
+def set_armed_status():
+    temp = not check_armed_status()
+    file = open(_armed_location, "w")
+    file.write(str(temp))
+    file.close()
+
+def check_armed_status():
+    file = open(_armed_location, "r")
+    temp = file.readline()
+    file.close()
+    ret = True
+    if temp == 'True':
+        ret = True
+    elif temp == 'False':
+        ret = False    
+    return ret
+
 def write_file(_rooms):
-    file = open("/home/jona/TinfoilHats/CHUB/storage.json","w")
+    file = open(_storage_location,"w")
     file.write(data_to_json(_rooms))
     file.close()
     
 def read_file():
-    file = open("/home/jona/TinfoilHats/CHUB/storage.json","r")
+    file = open(_storage_location ,"r")
     temp = json_to_data(file.read())
+    file.close()
     return temp
 
 def __auto_increment(_list):
@@ -31,11 +51,14 @@ def __auto_increment(_list):
         return temp + 1
 
 
-def add_module(_id, _name, _alive, _type, _room = 0):
+def add_module(_name, _alive, _type,_id = 0, _room = 0):
     temp = read_file()
+    temp_id = _id
     for room in temp:
         if _room == room['ID']:
-            room['Modules'].append(data_types.module_jsn(_id,_name,_alive,_type))
+            if temp_id == 0:
+                temp_id = __auto_increment(room['Modules'])
+            room['Modules'].append(data_types.module_jsn(temp_id,_name,_type,_alive))
     write_file(temp)
 
 def add_event(_triggerer):
@@ -80,7 +103,7 @@ def move_module(_module_id,_room_id):
                 temp_mod = module
                 room['Modules'].remove(module)
     write_file(temp)
-    add_module(temp_mod['ID'],temp_mod['Name'],temp_mod['Type'], temp_mod['Alive'],_room_id)
+    add_module(temp_mod['Name'],temp_mod['Type'], temp_mod['Alive'], temp_mod['ID'],_room_id)
 
 
 def send_to_front_end():
