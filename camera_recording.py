@@ -13,7 +13,9 @@ def record(number):
     vidName = "recording" + '.mp4'
     # MP4 codec
     fourcc = cv2.VideoWriter_fourcc(*'a\0\0\0')
+    # Change current directory to output directory to save the video in the same folder as the snapshots.
     os.chdir(outputDir)
+    # Create the video file
     out = cv2.VideoWriter(vidName, fourcc, 20.0, (320, 176))
 
     while(count > 0):
