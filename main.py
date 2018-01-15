@@ -11,18 +11,18 @@ def create_module_from(_signature):
     modules.append({'name':'Pressure','type':'Triggerer'})
     modules.append({'name':'Tripwire','type':'Triggerer'})
     modules.append({'name':'Motion','type':'Triggerer'})
-	
-	if _signature == 9:
-		mod = modules[0]		 
+    
+    if _signature == 9:
+        mod = modules[0]         
     else:
-		print(_signature)
-		
+        print(_signature)
+        
     sh.add_module(mod['name'],1,mod['type'],_signature)
 
 
 def main_loop():
     time_start = time.time()
-	conn = cc.chubConnection()
+    conn = cc.chubConnection()
     alive_counter = 300
     login_counter = 30
     test_counter = 0
@@ -38,21 +38,21 @@ def main_loop():
         elif time_elapsed >= login_counter:
             sig = conn.loginRequest()
             if sig != -1:
-				create_module_from(sig)
+                create_module_from(sig)
             login_counter += 30
         else:
             print("check whether the alarm is armed")
             if(sh.check_armed_status()):
-				trig = conn.checkAlarmStatus()
-				if trig != 0:
-					sh.add_event(trig)
-					#record and add location
-					conn.alarmed()
-					alarm_latch = True
-			else:
-				if alarm_latch:
-					conn.dealarm()
-					alarm_latch = False
+                trig = conn.checkAlarmStatus()
+                if trig != 0:
+                    sh.add_event(trig)
+                    #record and add location
+                    conn.alarmed()
+                    alarm_latch = True
+            else:
+                if alarm_latch:
+                    conn.dealarm()
+                    alarm_latch = False
             
         test_counter += 1
         if test_counter >= 660:
