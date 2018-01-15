@@ -2,29 +2,7 @@
   {
     "ID": 0,
     "Name": "undefined",
-    "Modules": [
-      {
-        "ID": 1,
-        "Name": "Siren0",
-        "Type": "Observer",
-        "Alive": 1,
-        "Override": "None"
-      },
-      {
-        "ID": 2,
-        "Name": "Door0",
-        "Type": "Triggerer",
-        "Alive": 1,
-        "Override": "None"
-      },
-      {
-        "ID": 3,
-        "Name": "Pressure0",
-        "Type": "Triggerer",
-        "Alive": 1,
-        "Override": "None"
-      }
-    ],
+    "Modules": [],
     "Events": []
   },
   {

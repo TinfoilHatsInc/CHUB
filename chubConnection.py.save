@@ -1,0 +1,55 @@
+import smbus
+import time
+
+bus = smbus.SMBus(1)
+loginAddr = 127
+addressArr = []
+
+
+def loginRequest(loginAddr):
+    bus.write_byte_data(loginAddr, 128, 1)
+    time.sleep(1)
+#this returns the signature instead
+    var = bus.read_byte(loginAddr)
+    print var
+def loginResponse(sendHash):
+    bus.write_i2c_block_data(loginAddr, 127, sendHash)
+    if bus.read_byte(loginAddr) == 200:
+       print("login successfull
+
+
+#TODO: rewrite return logic
+def checkAlarmStatus():
+    for addr in addressArr:
+        try:
+            bus.write_byte(addr, 125)
+            if bus.read_byte(addr) == 1:
+                return 1
+            else:
+                return 0
+        except:
+            print("failure in statuscheck on: " + addr)
+
+def isAliveRequest():
+    for addr in addressArr:
+        try:
+            bus.write_byte(addr, 124)
+            return (bus.read_i2c_block_data(addr, 124), addr)
+        except Exception as e:
+            print("exception in requesting isAlive")
+
+def isAliveResponse(address, sendHash):
+    try:
+        bus.write_i2c_block_data(addr, 123, sendHash)
+    except:
+        print("failure in isAliveResponse")
+
+def alarm(address):
+    try:
+        bus.write_byte(address, 123)
+    except Exception as e:
+        print("cant ring alarm")
+
+
+loginRequest(loginAddr)
+loginResponse(18446744073709551613)
