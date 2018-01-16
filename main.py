@@ -45,8 +45,9 @@ def main_loop():
             if(sh.check_armed_status()):
                 trig = conn.checkAlarmStatus()
                 if trig != 0:
-                    sh.add_event(trig)
-                    #record and add location
+                    if not alarm_latch:
+                        sh.add_event(trig)
+                        #record and add location
                     conn.alarmed()
                     alarm_latch = True
             else:
