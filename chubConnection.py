@@ -1,6 +1,23 @@
 import smbus
 import time
+import storageHandler as sh
 from random import randint
+
+def auto_incr( _list):
+    temp = 0
+    if not _list:
+        return 1
+    else:
+        for adr,sig in _list:
+            if temp < adr:
+                temp = adr
+        return temp + 1
+
+def compareHashes(hash1,hash2):
+    for i in range(0,8):
+        if hash1[i] != hash2[i]:
+            return False    
+    return True
 
 class chubConnection:
     bus = smbus.SMBus(1)
@@ -13,10 +30,11 @@ class chubConnection:
 
     def loginRequest(self):
         try:
-            self.bus.write_byte_data(self.loginAddr, 128, len(self.addressArr) + 1)
+            new_addr = auto_incr(self.addressArr)
+            self.bus.write_byte_data(self.loginAddr, 128, new_addr)
             #time.sleep(1)
             sig = self.bus.read_byte(self.loginAddr)
-            addr = self.loginResponse(self.currentHash) 
+            addr = self.loginResponse(self.currentHash,new_addr) 
             self.addressArr.append((addr,sig))
             print(self.addressArr)
             return sig
@@ -24,9 +42,9 @@ class chubConnection:
             print("no new module")
         return -1
 
-    def loginResponse(self,sendHash):
+    def loginResponse(self,sendHash, new_addr):
         self.bus.write_i2c_block_data(self.loginAddr, 127, sendHash)
-        temp_addr = len(self.addressArr) + 1
+        temp_addr = new_addr
         if self.bus.read_byte(temp_addr) == 200:
             print("login successfull")
             return temp_addr
@@ -46,11 +64,15 @@ class chubConnection:
         return 0
 
     def isAliveRequestAll(self):
+        newhash = self.generateNewHash()
         for addr,sig in self.addressArr:
-            self.isAliveRequest(addr)
-            self.currentHash = self.generateNewHash()
-            self.isAliveResponse(addr, self.currentHash)
-            
+            myhash = self.isAliveRequest(addr)
+            if compareHashes(self.currentHash,myhash):
+                self.isAliveResponse(addr, newhash)
+            else:
+                sh.update_module(sig)
+                self.addressArr.remove((addr,sig))
+        self.currentHash = newhash
             
 
     def generateNewHash(self):

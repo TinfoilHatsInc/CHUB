@@ -18,7 +18,7 @@ def __usage():
 def __main(argv):
 
     try:
-        opts,args = getopt.getopt(argv,'hcr:m:u:',['help','call','add_room=','move_mod=','update_event=','get_armed','set_armed'])
+        opts,args = getopt.getopt(argv,'hcr:m:u:d:',['help','call','add_room=','move_mod=','update_event=','get_armed','set_armed'])
     except getopt.GetoptError:
         sys.exit(2)
     for opt, arg in opts:
@@ -38,6 +38,8 @@ def __main(argv):
             print(sh.check_armed_status())
         elif opt in ("--set_armed"):
             sh.set_armed_status()
+        elif opt in ("-d"):
+            sh.delete_event(arg)
     sys.exit()
 
 

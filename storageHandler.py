@@ -61,6 +61,18 @@ def add_module(_name, _alive, _type,_id = 0, _room = 0):
             room['Modules'].append(data_types.module_jsn(temp_id,_name,_type,_alive))
     write_file(temp)
 
+def update_module(_id):
+    temp = read_file()
+    for room in temp:
+        for module in room['Modules']:
+            if module['ID'] == _id:
+                if module['Alive'] == 1:
+                    module['Alive'] = 0
+                else:
+                    module['Alive'] = 1
+    write_file(temp)
+    
+
 def add_event(_triggerer):
     temp = read_file()
     temp_id = 0
@@ -79,6 +91,13 @@ def update_event_status(_event_id,_room_id,_importance):
             for event in room['Events']:
                 if event['ID'] == _event_id:
                     event['Important'] = _importance
+    write_file(temp)
+def delete_event(_id):
+    temp = read_file()
+    for room in temp:
+        for event in room['Events']:
+            if event['ID'] == _id:
+                room['Events'].remove(event)
     write_file(temp)
 
 def add_recording(_event_id, _location):
