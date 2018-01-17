@@ -1,7 +1,7 @@
 import storageHandler as sh
 import chubConnection as cc
 import time
-
+import camera_recording as cr
 
 
 def create_module_from(_signature):
@@ -12,8 +12,10 @@ def create_module_from(_signature):
     modules.append({'name':'Tripwire','type':'Triggerer'})
     modules.append({'name':'Motion','type':'Triggerer'})
     
-    if _signature == 9:
-        mod = modules[0]         
+    if _signature == 192:
+        mod = modules[2]
+    elif _signature == 128:
+		mod = modules[4]
     else:
         print(_signature)
         
@@ -46,8 +48,8 @@ def main_loop():
                 trig = conn.checkAlarmStatus()
                 if trig != 0:
                     if not alarm_latch:
-                        sh.add_event(trig)
-                        #record and add location
+                        tempid = sh.add_event(trig)
+                        sh.add_recording(tempid, cr.recordnow())
                     conn.alarmed()
                     alarm_latch = True
             else:
@@ -56,7 +58,8 @@ def main_loop():
                     alarm_latch = False
             
         test_counter += 1
-        if test_counter >= 660:
+        if test_counter >= 1500:
             is_running = False
         time.sleep(1)
 
+main_loop()

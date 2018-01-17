@@ -2,8 +2,8 @@ import json
 import data_types
 import datetime
 
-_armed_location = "/home/jona/TinfoilHats/CHUB/armed.stat"
-_storage_location ="/home/jona/TinfoilHats/CHUB/storage.json"
+_armed_location = "/home/pi/Chub/CHUB/armed.stat"
+_storage_location ="/home/pi/Chub/CHUB/storage.json"
 
 
 def data_to_json(_rooms):
@@ -92,6 +92,7 @@ def update_event_status(_event_id,_room_id,_importance):
                 if event['ID'] == _event_id:
                     event['Important'] = _importance
     write_file(temp)
+
 def delete_event(_id):
     temp = read_file()
     for room in temp:

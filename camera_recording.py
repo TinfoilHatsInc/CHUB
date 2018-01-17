@@ -2,13 +2,6 @@ import cv2
 import os
 import time
 
-#Below code will capture X snapshots, store them in a specific folder with timestamps and create a short .MP4 movie with it
-
-#Directory that will receive all the shots + the recording video
-outputDir = '/var/www/ChubFront/Files'+time.strftime("/%Y-%m-%d_%Hh%Mm%Ss")
-print("Creating folder..")
-os.makedirs(outputDir)
-number = 80
 
 def record(number):
     print("Start recording..")
@@ -72,5 +65,15 @@ def test():
         print("/!\WARNING/!\ INTRUDER DETECTED /!\WARNING/!\ ")
     else: print("No intruder detected")
 
-record(number)
-test()
+def recordnow():
+    #Below code will capture X snapshots, store them in a specific folder with timestamps and create a short .MP4 movie with it
+	dirname = time.strftime("/%Y-%m-%d_%Hh%Mm%Ss")
+    #Directory that will receive all the shots + the recording video
+    outputDir = '/var/www/ChubFront/Files'+ dirname
+    print("Creating folder..")
+    os.makedirs(outputDir)
+    number = 80
+
+    record(number)
+    test()
+    return '/Files'+dirname

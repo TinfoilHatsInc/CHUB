@@ -1,38 +1,71 @@
 [
   {
-    "ID": 0,
-    "Name": "undefined",
-    "Modules": [],
-    "Events": []
-  },
+    "Events": [
+      {
+        "Recordings": [
+          {
+            "File_Location": "/Files/2018-01-17_13h48m29s", 
+            "ID": 1
+          }
+        ], 
+        "Important": true, 
+        "ID": 1, 
+        "Datetime": "16-01-2018 11:47:34"
+      }, 
+      {
+        "Recordings": [], 
+        "Important": false, 
+        "ID": 2, 
+        "Datetime": "16-01-2018 11:49:13"
+      }
+    ], 
+    "Modules": [
+      {
+        "Override": "None", 
+        "Type": "Triggerer", 
+        "ID": 128, 
+        "Alive": 1, 
+        "Name": "Motion"
+      }, 
+      {
+        "Override": "None", 
+        "Type": "Triggerer", 
+        "ID": 192, 
+        "Alive": 1, 
+        "Name": "Pressure"
+      }
+    ], 
+    "ID": 0, 
+    "Name": "undefined"
+  }, 
   {
-    "ID": 1,
-    "Name": "Kitchen",
-    "Modules": [],
-    "Events": []
-  },
+    "Events": [], 
+    "Modules": [], 
+    "ID": 1, 
+    "Name": "Kitchen"
+  }, 
   {
-    "ID": 2,
-    "Name": "Living Room",
-    "Modules": [],
-    "Events": []
-  },
+    "Events": [], 
+    "Modules": [], 
+    "ID": 2, 
+    "Name": "Living Room"
+  }, 
   {
-    "ID": 3,
-    "Name": "Dinning Room",
-    "Modules": [],
-    "Events": []
-  },
+    "Events": [], 
+    "Modules": [], 
+    "ID": 3, 
+    "Name": "Dinning Room"
+  }, 
   {
-    "ID": 4,
-    "Name": "Bath Room",
-    "Modules": [],
-    "Events": []
-  },
+    "Events": [], 
+    "Modules": [], 
+    "ID": 4, 
+    "Name": "Bath Room"
+  }, 
   {
-    "ID": 5,
-    "Name": "name",
-    "Modules": [],
-    "Events": []
+    "Events": [], 
+    "Modules": [], 
+    "ID": 5, 
+    "Name": "name"
   }
 ]
