@@ -15,7 +15,9 @@ def create_module_from(_signature):
     if _signature == 192:
         mod = modules[2]
     elif _signature == 128:
-		mod = modules[4]
+        mod = modules[4]
+    elif _signature == 1:
+        mod = modules[0]
     else:
         print(_signature)
         

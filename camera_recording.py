@@ -67,7 +67,7 @@ def test():
 
 def recordnow():
     #Below code will capture X snapshots, store them in a specific folder with timestamps and create a short .MP4 movie with it
-	dirname = time.strftime("/%Y-%m-%d_%Hh%Mm%Ss")
+    dirname = time.strftime("/%Y-%m-%d_%Hh%Mm%Ss")
     #Directory that will receive all the shots + the recording video
     outputDir = '/var/www/ChubFront/Files'+ dirname
     print("Creating folder..")
