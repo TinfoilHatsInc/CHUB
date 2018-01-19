@@ -41,7 +41,7 @@ def record(number):
     
     print("End recording..")
 
-def test(): 
+def IntruderRecognition(number): 
     print("Start intruder recognition..")
     intruder = 0
     face_cascade = cv2.CascadeClassifier('/home/pi/Chub/CHUB/haarcascade_frontalface_default.xml')
@@ -75,5 +75,5 @@ def recordnow():
     number = 80
 
     record(number)
-    test()
+    IntruderRecognition(number)
     return '/Files'+dirname
